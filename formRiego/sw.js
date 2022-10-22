@@ -6,7 +6,12 @@ self.addEventListener( 'install', e => {
 
      cache.addAll([
         '/index.html',
-        '/estilos/formularios.css'
+        '/estilos/formularios.css',
+        '/imagenes/bac-imag.webp',
+        '/imagenes/.ElCerezoOriginal.webp',
+        
+
+
 
    
      ]);
