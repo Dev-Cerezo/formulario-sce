@@ -4,43 +4,37 @@ var editar = false;
 obtenerciclo();
 function obtenerciclo(){
 console.log()
-    $.get("https://api.gec.org.mx/api/riegos/getFormCiclos") //hacemos el llamado de la web api
-    .done(function(response){ //cuando se ejecute va aobtener una respuesta response
-   
-        $.each( response[0], function( id, fila){
-       
-                $("#tbody-ciclo").append("<tr><td style='background-color: green; text-align: center; color:white'>"+fila.fecha
-                +"</td><td style='background-color: green; text-align: center; color:white'>"+fila.cultivo_revisado+"</td></br>")
-             
-                       /*console.log(fila.cultivo_revisado)
-                         $("<tr id='mydiv2'>").append(
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.fecha),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.cultivo_revisado),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.rancho_revisado),
-                             //$("<td style='background-color: green; text-align: center; color:white'>").text(fila.n_ciclo),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.tiempo_ciclo),
-                            // $("<td style='background-color: green; text-align: center; color:white'>").text(fila.n_base),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.status_producto),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.presion_riego_valvula),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.presion_riego_cintilla_manguera),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ph_gotero),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ce_gotero),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.mililitros_captacion),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ph_dren),  
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ce_dren),  
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.mililitros_dren),  
-                             $("<td style='background-color: green; text-align: center;'>").text(fila.porcentaje_humedad), 
-                             $("<td style='background-color: green; text-align: center;'>").text(fila.evapotranspiracion), 
-                             $("<td style='background-color: green; text-align: center;'>").text(fila.comentario_general),
-                             $("<td>").append(
-                                 $("<button data-toggle='modal' data-target='#exampleModal'>").data("id",fila.id).addClass("btn btn-primary btn-sm mr-1 editar").text("Editar").attr({"type":"button"}),
-                                 $("<button>").data("id",fila.id).addClass("btn btn-danger btn-sm eliminar").text("Eliminar").attr({"type":"button"})
-                             )
-                         ).appendTo(".table2")*/
-        
+let i=0;
 
-        });
+fetch('https://api.gec.org.mx/api/riegos/getFormCiclos')
+.then(resp => resp.json())
+.then(resp => {
+    resp[0].forEach(element => {
+     
+        //console.log(i, resp[i].humedad)
+        $("#tbodyciclo").append('<tr><td style="background-color: green; text-align: center; color:white">'+
+        element.pk_wap_rciclo_pro_01+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.fecha+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.cultivo_revisado+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.rancho_revisado+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.n_ciclo+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.tiempo_ciclo+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.n_base+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.status_producto+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.presion_riego_valvula+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.presion_riego_cintilla_manguera+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ph_gotero+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ce_gotero+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.mililitros_captacion+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ph_dren+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ce_dren+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.mililitros_dren+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.porcentaje_humedad+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.evapotranspiracion+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.comentario_general+'</td><td style="background-color: green; text-align: center; color:white"><button class="eliminar-ciclo btn-danger" data-id="'+element.pk_wap_rciclo_pro_01+'">Eliminar</button></td></tr>')
+        i=i+1;
     });
+})
 }
 
 $(document).on('click', '.editar', function () {
@@ -86,17 +80,41 @@ $.get("https://api.gec.org.mx/api/riegos/getFormCiclos" + iduser2)
           comentario_general : $("#txtcomentariociclo").val(),
             }
           
-            $.post("https://api.gec.org.mx/api/riegos/getFormCiclos", data)
-            .done(function(response) {
-                console.log(response);
-                console.log("envio inf")
-                if(response){
-                    
-                   
-                }else{
-                    alert("usuario no creado")
+            fetch('https://api.gec.org.mx/api/riegos/getFormCiclos', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            });
+            })
+            .then( resp => resp.json())
+            .then( resp => {
+                console.log(resp)
+                if (resp.status != 'ERROR') {
+  document.getElementById("miForm-ciclo").reset();
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: resp.mensaje,
+    showConfirmButton: true,
+    timer: 2500
+  })
+  obtenerciclo();
+                }else{
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: resp.mensaje,
+                        showConfirmButton: false,
+                        timer: 2500
+                      }) 
+                }
+                
+            } )
+            .catch(error => {
+                console.log("error de peticion")
+                console.log(error)
+            })
       }else{
         var data = {
                   id : iduser2,
@@ -120,41 +138,51 @@ $.get("https://api.gec.org.mx/api/riegos/getFormCiclos" + iduser2)
                   comentario_general : $("#txtcomentario").val(),
             }
 
-                $.ajax({
-                method: "PUT",
-                url: "https://api.gec.org.mx/api/riegos/getFormCiclos"+iduser2,
-                contentType: 'application/json',
-                data: JSON.stringify(data), // access in body
-                })
-                .done(function( response ) {
-                    console.log(response);
-                    if(response){
-                        alert("Se guardaron los cambios");
-                        window.location = "index.html";
-                    }else{
-                        alert("Error al Modificar")
-                    }
-                });
+            fetch('https://api.gec.org.mx/api/riegos/getFormCiclos', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then( resp => resp.json() )
+.then( console.log )
+.catch( error=> {
+    console.log('error en la peticion')
+    console.log(error)
+} );
+
                 editar = false;
       }
 })
 
   
 
-    $(document).on('click', '.eliminar', function () {
+    $(document).on('click', '.eliminar-ciclo', function () {
             iduser2 = $(this).data("id");
-
-            $.ajax({
-            method: "DELETE",
-            url: "https://api.gec.org.mx/api/riegos/getFormCiclos" + iduser2})
-            .done(function( response ) {
-                console.log(iduser2);
-                if(response){
-                    Obtener();
-                }else{
-                    alert("Error al eliminar")
+  console.log(iduser2)
+            fetch('https://api.gec.org.mx/api/riegos/getFormCiclos/'+iduser2+'', {
+                method: 'DELETE',
+            })
+            .then( resp => resp.json())
+            .then( resp => {
+                console.log(resp)
+                if(resp.status == 'Eliminación con éxito'){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: resp.status,
+                        showConfirmButton: true,
+                        timer: 2500
+                      })
+                      obtener();
                 }
-            });
+                
+            })
+            .catch(error => {
+                console.log("error de peticion")
+                console.log(error)
+            })
             
         });
 
@@ -180,7 +208,7 @@ var cultivo = "";
       respObj.forEach(respuesta => {
       
         if (respObj[i].CULTIVO == cultivo && respObj[i].MEDIO == "SUSTRATO") {
-          $("#txtranchociclo_revisado").append("<option id='prueba2' value="+respObj[i].CODIGO+">"+respObj[i].CODIGO+"-"+respObj[i].DESCRIPCION+"</option>")
+          $("#txtranchociclo_revisado").append("<option id='prueba2' value="+respObj[i].CODIGO+"_"+respObj[i].DESCRIPCION+">"+respObj[i].CODIGO+"-"+respObj[i].DESCRIPCION+"</option>")
         }
         
         i=i+1;

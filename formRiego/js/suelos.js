@@ -7,35 +7,36 @@ obtener();
 function obtener(){
     $(".table tbody").html(""); //limpia la tabla
 
-    $.get("https://api.gec.org.mx/api/riegos/getFormSuelos") //hacemos el llamado de la web api
-    .done(function(response){ //cuando se ejecute va aobtener una respuesta response
-
-        $.each( response[0], function( id, fila){
-         
-            $("<tr id='mydiv'>").append(
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.fecha),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.cultivo_revisado),
-       /* $("<td style='background-color: green; text-align: center; color:white'>").text(fila.rancho_revisado),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.metodo_aplicacion),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.status_producto),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.humedad),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.presion_riego_valvula),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.presion_riego_cintilla_manguera),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ph_gotero),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ph_bomba),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ph_tierra),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ce_gotero),
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ce_bomba),  
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ce_tierra),  
-        $("<td style='background-color: green; text-align: center; color:white'>").text(fila.evapotranspiracion),  
-        $("<td style='background-color: green; text-align: center;'>").text(fila.comentario_general), 
-                $("<td>").append(
-                    $("<button data-toggle='modal' data-target='#exampleModal'>").data("id",fila.id).addClass("btn btn-primary btn-sm mr-1 editar").text("Editar").attr({"type":"button"}),
-                    $("<button>").data("id",fila.id).addClass("btn btn-danger btn-sm eliminar").text("Eliminar").attr({"type":"button"})
-                )*/
-            ).appendTo(".table")
-        });
+    let i=0;
+fetch('https://api.gec.org.mx/api/riegos/getFormSuelos')
+.then(resp => resp.json())
+.then(resp => {
+    resp[0].forEach(element => {
+     
+        //console.log(i, resp[i].humedad)
+        $("#tbodysuelo").append('<tr class="table-active"><td class="table-active" style="background-color: green; text-align: center; color:white">'+
+        element.pk_wap_rsuelo_pro_01+'</td><td class="table-active" style="background-color: green; text-align: center; color:white">'+
+        element.fecha+'</td><td class="table-active" style="background-color: green; text-align: center; color:white">'+
+        element.cultivo_revisado+'</td><td class="table-active" style="background-color: green; text-align: center; color:white">'+
+        element.rancho_revisado+'</td><td class="table-active" style="background-color: green; text-align: center; color:white">'+
+        element.metodo_aplicacion+'</td><td class="table-active" style="background-color: green; text-align: center; color:white">'+
+        element.status_producto+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.humedad+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.presion_riego_valvula+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.presion_riego_cintilla_manguera+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ph_gotero+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ph_bomba+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ph_tierra+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ce_gotero+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ce_bomba+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ce_tierra+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.evapotranspiracion+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.comentario_general+'</td><td style="background-color: green; text-align: center; color:white"><button class="eliminar-suelo btn-danger" data-id="'+element.pk_wap_rsuelo_pro_01+'">Eliminar</button></tr>')
+        i=i+1;
     });
+})
+
+
 }
 
 $(document).on('click', '.editar', function () {
@@ -58,7 +59,7 @@ $.get("https://api.gec.org.mx/api/riegos/getFormSuelos" + iduser)
 
 
     document.getElementById("savesuelo").addEventListener('click', () => {
-  console.log("hola")
+ 
       if (editar == false) {
         var data = {
           fecha : $("#txtfecha").val(),
@@ -78,19 +79,44 @@ $.get("https://api.gec.org.mx/api/riegos/getFormSuelos" + iduser)
           evapotranspiracion: $("#txtevapotranspiracion").val(),
           comentario_general : $("#txtcomentario").val(),
             }
-          
-            $.post("https://api.gec.org.mx/api/riegos/getFormSuelos", data)
-            .done(function(response) {
-                console.log(response);
-                console.log("envio inf")
-                if(response){
-                    
-                    
-                   
+
+            fetch('https://api.gec.org.mx/api/riegos/getFormSuelos', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+.then( resp => resp.json())
+            .then( resp => {
+                console.log(resp)
+                if (resp.status != 'ERROR') {
+  document.getElementById("miForm-suelo").reset();
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: resp.mensaje,
+    showConfirmButton: true,
+    timer: 2500
+  })
+  obtener();
                 }else{
-                    alert("usuario no creado")
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: resp.mensaje,
+                        showConfirmButton: false,
+                        timer: 2500
+                      }) 
                 }
-            });
+                
+            } )
+            .catch(error => {
+                console.log("error de peticion")
+                console.log(error)
+            })
+          
+       
       }else{
         var data = {
                   id : iduser,
@@ -104,7 +130,7 @@ $.get("https://api.gec.org.mx/api/riegos/getFormSuelos" + iduser)
           Presion_riego_cintilla_manguera : $("#txpresion_riego_cintilla_manguera").val(),
           Ph_gotero : $("#txthp_gotero").val(),
           ph_bomba : $("#txtph_bomba").val(),
-          ph_tierra : $("#txtph_tierra").val(),
+          ph_tierra : $("#txtph_tierra txtph_tierra").val(),
           Ce_gotero : $("#txtce_gotero").val(),
           Ce_bomba : $("#txtce_bomba").val(),
           Ce_tierra : $("#txce_tierra").val(),
@@ -122,7 +148,7 @@ $.get("https://api.gec.org.mx/api/riegos/getFormSuelos" + iduser)
                     console.log(response);
                     if(response){
                         alert("Se guardaron los cambios");
-                        window.location = "index.html";
+                      
                     }else{
                         alert("Error al Modificar")
                     }
@@ -133,22 +159,33 @@ $.get("https://api.gec.org.mx/api/riegos/getFormSuelos" + iduser)
 
   
 
-    $(document).on('click', '.eliminar', function () {
-            iduser = $(this).data("id");
-
-            $.ajax({
-            method: "DELETE",
-            url: "https://api.gec.org.mx/api/riegos/getFormSuelos" + iduser})
-            .done(function( response ) {
-                console.log(iduser);
-                if(response){
-                    Obtener();
-                }else{
-                    alert("Error al eliminar")
-                }
-            });
-            
-        });
+$(document).on('click', '.eliminar-suelo', function () {
+    iduser= $(this).data("id");
+console.log(iduser2)
+    fetch('https://api.gec.org.mx/api/riegos/getFormSuelos/'+iduser+'', {
+        method: 'DELETE',
+    })
+    .then( resp => resp.json())
+    .then( resp => {
+        console.log(resp)
+        if(resp.status == 'Eliminación con éxito'){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: resp.status,
+                showConfirmButton: true,
+                timer: 2500
+              })
+              obtener();
+        }
+        
+    })
+    .catch(error => {
+        console.log("error de peticion")
+        console.log(error)
+    })
+    
+});
 
 
              //RANCHOS-ESTACIÓN
@@ -178,7 +215,7 @@ $.get("https://api.gec.org.mx/api/riegos/getFormSuelos" + iduser)
      respObj.forEach(respuesta => {
        console.log(respObj[i].CULTIVO,cultivo_estacion) 
        if (respObj[i].CULTIVO == cultivo_estacion && respObj[i].MEDIO == "SUELO") {
-         $("#txtrancho_revisado").append("<option id='prueba' value="+respObj[i].CODIGO+" "+respObj[i].DESCRIPCION+">"+respObj[i].CODIGO+"-"+respObj[i].DESCRIPCION+"</option>")
+         $("#txtrancho_revisado").append("<option id='prueba' value="+respObj[i].CODIGO+"_"+respObj[i].DESCRIPCION+">"+respObj[i].CODIGO+"-"+respObj[i].DESCRIPCION+"</option>")
        }
        
        i=i+1;
@@ -190,5 +227,3 @@ $.get("https://api.gec.org.mx/api/riegos/getFormSuelos" + iduser)
        
          
          
-
-  

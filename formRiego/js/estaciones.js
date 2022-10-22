@@ -1,48 +1,36 @@
 let iduser3 = 0;
 var editar = false;
 
-obtenerciclo();
-function obtenerciclo(){
-console.log()
-    $.get("https://api.gec.org.mx/api/riegos/getFormEstaciones") //hacemos el llamado de la web api
-    .done(function(response){ //cuando se ejecute va aobtener una respuesta response
- 
-        $.each( response[0], function( id, fila){
-            console.log(fila.cultivo_revisado)
-       
-                $("#tbody-estaciones").append("<tr><td style='background-color: green; text-align: center; color:white'>"+fila.fecha
-                +"</td><td style='background-color: green; text-align: center; color:white'>"+fila.cultivo_revisado+"</td></br>")
-             
-                       /*console.log(fila.cultivo_revisado)
-                         $("<tr id='mydiv2'>").append(
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.fecha),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.cultivo_revisado),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.rancho_revisado),
-                             //$("<td style='background-color: green; text-align: center; color:white'>").text(fila.n_ciclo),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.tiempo_ciclo),
-                            // $("<td style='background-color: green; text-align: center; color:white'>").text(fila.n_base),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.status_producto),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.presion_riego_valvula),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.presion_riego_cintilla_manguera),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ph_gotero),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ce_gotero),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.mililitros_captacion),
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ph_dren),  
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.ce_dren),  
-                             $("<td style='background-color: green; text-align: center; color:white'>").text(fila.mililitros_dren),  
-                             $("<td style='background-color: green; text-align: center;'>").text(fila.porcentaje_humedad), 
-                             $("<td style='background-color: green; text-align: center;'>").text(fila.evapotranspiracion), 
-                             $("<td style='background-color: green; text-align: center;'>").text(fila.comentario_general),
-                             $("<td>").append(
-                                 $("<button data-toggle='modal' data-target='#exampleModal'>").data("id",fila.id).addClass("btn btn-primary btn-sm mr-1 editar").text("Editar").attr({"type":"button"}),
-                                 $("<button>").data("id",fila.id).addClass("btn btn-danger btn-sm eliminar").text("Eliminar").attr({"type":"button"})
-                             )
-                         ).appendTo(".table2")*/ 
-                        
-            
-          
-        });
+obtenerestacion();
+function obtenerestacion(){
+
+    $(".table tbody").html(""); //limpia la tabla
+
+    let i=0;
+fetch('https://api.gec.org.mx/api/riegos/getFormEstaciones')
+.then(resp => resp.json())
+.then(resp => {
+    resp[0].forEach(element => {
+     
+        //console.log(i, resp[i].humedad)
+        $("#tbodyestaciones").append('<tr><td style="background-color: green; text-align: center; color:white">'+
+        element.pk_wap_rhidro_pro_01+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.fecha+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.cultivo_revisado+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.rancho_revisado+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.n_estacion+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.mililitros_captacion+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ph_entrada+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ce_entrada+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.mililitros_dren+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ph_dren+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.ce_dren+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.variedad+'</td><td style="background-color: green; text-align: center; color:white">'+
+        element.comentario_general+'</td><td style="background-color: green; text-align: center; color:white"><button class="eliminar-estaciones btn-danger" data-id="'+element.pk_wap_rhidro_pro_01+'">Eliminar</button></td></tr>')
+        i=i+1;
     });
+})
+    
 }
 
 $(document).on('click', '.editar', function () {
@@ -81,18 +69,43 @@ $.get("https://api.gec.org.mx/api/riegos/getFormEstaciones" + iduser3)
           variedad : $("#txtvariedadestacion").val(),
           comentario_general : $("#txtcomentarioestacion").val(),
             }
-          
-            $.post("https://api.gec.org.mx/api/riegos/getFormEstaciones", data)
-            .done(function(response) {
-                console.log(response);
-                console.log("envio inf")
-                if(response){
-                    
-                   
-                }else{
-                    alert("usuario no creado")
+
+            fetch('https://api.gec.org.mx/api/riegos/getFormEstaciones', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            });
+            })
+            .then( resp => resp.json())
+            .then( resp => {
+                console.log(resp)
+                if (resp.status != 'ERROR') {
+  document.getElementById("miForm-estacion").reset();
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: resp.mensaje,
+    showConfirmButton: true,
+    timer: 2500
+  })
+  obtenerestacion();
+                }else{
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: resp.mensaje,
+                        showConfirmButton: false,
+                        timer: 2500
+                      }) 
+                }
+                
+            } )
+            .catch(error => {
+                console.log("error de peticion")
+                console.log(error)
+            })
+          
       }else{
         var data = {
                   id : iduser3,
@@ -120,7 +133,7 @@ $.get("https://api.gec.org.mx/api/riegos/getFormEstaciones" + iduser3)
                     console.log(response);
                     if(response){
                         alert("Se guardaron los cambios");
-                        window.location = "index.html";
+                      
                     }else{
                         alert("Error al Modificar")
                     }
@@ -131,22 +144,33 @@ $.get("https://api.gec.org.mx/api/riegos/getFormEstaciones" + iduser3)
 
   
 
-    $(document).on('click', '.eliminar', function () {
-            iduser3 = $(this).data("id");
-
-            $.ajax({
-            method: "DELETE",
-            url: "https://api.gec.org.mx/api/riegos/getFormEstaciones" + iduser3})
-            .done(function( response ) {
-                console.log(iduser3);
-                if(response){
-                    Obtener();
-                }else{
-                    alert("Error al eliminar")
-                }
-            });
-            
-        });
+$(document).on('click', '.eliminar-estaciones', function () {
+    iduser3 = $(this).data("id");
+console.log(iduser2)
+    fetch('https://api.gec.org.mx/api/riegos/getFormEstaciones/'+iduser3+'', {
+        method: 'DELETE',
+    })
+    .then( resp => resp.json())
+    .then( resp => {
+        console.log(resp)
+        if(resp.status == 'Eliminación con éxito'){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: resp.status,
+                showConfirmButton: true,
+                timer: 2500
+              })
+              obtener();
+        }
+        
+    })
+    .catch(error => {
+        console.log("error de peticion")
+        console.log(error)
+    })
+    
+});
 
 
 
@@ -170,7 +194,7 @@ var cultivo = "";
       respObj.forEach(respuesta => {
       
         if (respObj[i].CULTIVO == cultivo && respObj[i].MEDIO == "SUSTRATO") {
-          $("#txtranchoestacion_revisado").append("<option id='prueba2' value="+respObj[i].CODIGO+">"+respObj[i].CODIGO+"-"+respObj[i].DESCRIPCION+"</option>")
+          $("#txtranchoestacion_revisado").append("<option id='prueba2' value="+respObj[i].CODIGO+"_"+respObj[i].DESCRIPCION+">"+respObj[i].CODIGO+"-"+respObj[i].DESCRIPCION+"</option>")
         }
         
         i=i+1;

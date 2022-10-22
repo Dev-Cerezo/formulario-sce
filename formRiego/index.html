@@ -1,52 +1,53 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        
-   <script src="https://code.jquery.com/jquery-3.0.0.js"crossorigin="anonymous"></script>
-   <!-- jQuery and JS bundle w/ Popper.js -->
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="estilos/formularios.css">
+     <!-- Required meta tags -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <link rel="stylesheet" href="estilos/formularios.css">
+ 
+     <link rel="icon" href="imagenes/ElCerezoOriginal.webp">
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <link rel="icon" href="imagenes/ElCerezoOriginal.webp">
-   
+     <link rel="stylesheet" href="/js/plugisns/mdtoast.min.css">
+     <link rel="stylesheet" href="/js/plugisns/mdtoast.min.js">
+     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+ 
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     
-   
-
-    <!-- Bootstrap CSS -->
-  
-    <title>ACLARACIONES</title>
   </head>
+ 
   <body>
+    
 
-    <center>
 <div class="title-btn">
-    <img class="img-btn" src="img/ElCerezoOriginal.webp" alt="">
+    <img class="img-btn" src="imagenes/ElCerezoOriginal.webp" alt="">
     
 			<h6>Formularios de campo.<span>&#160;</span></h6>
-
-</div>
-      
-   <div class="container-btn"> 
+     
+</div><br><br>
           
           <!-- Button trigger modal suelo-->
           <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#Modal-suelo">
-            Especificación de Requisitos suelo
-          </button><br>
+            Registrar Requisitos suelo
+          </button><br><br>
 
 <!-- Modal info suelo-->
          
-  
+<div id="table_suelo" class="table-responsive">
           <table class="table table-striped">
               <thead>
                   <tr>
+                    <th scope="col">Clave</th>
                       <th scope="col">Fecha</th>
                       <th scope="col">Cultivo revisado</th>
-                    <!--  <th scope="col">Rancho revisado</th>
+                      <th scope="col">Rancho revisado</th>
                       <th scope="col">Metodo aplicación</th>
                       <th scope="col">Tiene producto</th>
                       <th scope="col">Humedad</th>
@@ -59,78 +60,95 @@
                       <th scope="col">ce-bomba</th>
                       <th scope="col">ce-tierra</th>
                       <th scope="col">evapotranspiración</th>
-                      <th scope="col">comentario general</th>-->
+                      <th scope="col">comentario general</th>
+                      <th scope="col">Opción</th>
                   </tr>
               </thead>
-          </table><br><br>
+              <tbody id="tbodysuelo">
+                <tr>
+            
+                </tr>
+              </tbody>
+          </table>
+        </div><br><br>
    
-
+        
 <!--información suelo fin-->
       <!-- Button trigger modal ciclos-->
 <button type="button" id="btn-nomina" class="btn btn-success btn-block" data-toggle="modal" data-target="#Modal-detalle-ciclos">
-  Especificación de Requisitos, detalle de ciclos
+  Registrar detalle de ciclos
 </button><br><br>
-
+<div class=" table-responsive">
 <table class="table table-striped">
   <thead>
       <tr>
-          <th scope="col">Fecha</th>
+        <th scope="col">Clave</th>
+         <th scope="col">Fecha</th>
           <th scope="col">Cultivo revisado</th>
-        <!--  <th scope="col">Rancho revisado</th>
-          <th scope="col">Metodo aplicación</th>
-          <th scope="col">Tiene producto</th>
-          <th scope="col">Humedad</th>
-          <th scope="col">Presion riego valvula</th>
-          <th scope="col">Presion riego cintilla/manguera</th>
-          <th scope="col">ph-gotero</th>
-          <th scope="col">ph-bomba</th>
-          <th scope="col">ph-tierra</th>
-          <th scope="col">ce-gotero</th>
-          <th scope="col">ce-bomba</th>
-          <th scope="col">ce-tierra</th>
+          <th scope="col">Rancho revisado</th>
+          <th scope="col">#_ciclo"</th>
+          <th scope="col">tiempo_ciclo(Minutos)</th>
+          <th scope="col">#_base</th>
+          <th scope="col">Tiene_producto</th>
+         <th scope="col">presion_riego_valvula</th>
+          <th scope="col">presion_riego_cintilla_manguera</th>
+          <th scope="col">ph_gotero</th>
+          <th scope="col">ce_gotero</th>
+          <th scope="col">mililitros_captacion</th>
+          <th scope="col">ph_dren</th>
+          <th scope="col">ce_dren</th>
+          <th scope="col">mililitros_dren</th>
+          <th scope="col">porcentaje_humedad</th>
           <th scope="col">evapotranspiración</th>
-          <th scope="col">comentario general</th>-->
+          <th scope="col">comentario general</th>
+          <th scope="col">Opción</th>
       </tr>
   </thead>
-  <tbody id="tbody-ciclo"></tbody>
-</table><br><br>
+  <tbody id="tbodyciclo">
+    <tr>
+
+    </tr>
+  </tbody>
+</table></div><br><br>
 
     
 <!-- Button trigger modal estaciones-->
 <button type="button" id="btn-nomina" class="btn btn-success btn-block" data-toggle="modal" data-target="#Modal-estaciones">
-  Especificación de Requisitos, Detalle de estaciones
+  Registrar Detalle de estaciones
 </button><br><br>
 
 
-
+<div class=" table-responsive table-striped">
 <table class="table table-striped">
   <thead>
-      <tr>
+     <tr>
+          <th scope="col">clave</th>
           <th scope="col">Fecha</th>
           <th scope="col">Cultivo revisado</th>
-        <!--  <th scope="col">Rancho revisado</th>
-          <th scope="col">Metodo aplicación</th>
-          <th scope="col">Tiene producto</th>
-          <th scope="col">Humedad</th>
-          <th scope="col">Presion riego valvula</th>
-          <th scope="col">Presion riego cintilla/manguera</th>
-          <th scope="col">ph-gotero</th>
-          <th scope="col">ph-bomba</th>
-          <th scope="col">ph-tierra</th>
-          <th scope="col">ce-gotero</th>
-          <th scope="col">ce-bomba</th>
-          <th scope="col">ce-tierra</th>
-          <th scope="col">evapotranspiración</th>
-          <th scope="col">comentario general</th>-->
-      </tr>
+          <th scope="col">Rancho revisado</th>
+          <th scope="col">#__estacion</th>
+          <th scope="col">mililitros_captacion</th>
+          <th scope="col">ph_entrada</th>
+          <th scope="col">ce_entrada</th>
+          <th scope="col">mililitros_dren</th>
+          <th scope="col">ph_dren</th>
+          <th scope="col">ce_dren</th>
+          <th scope="col">variedad</th>
+          <th scope="col">comentario_general</th>
+          <th scope="col">Opción</th>
+      </tr> 
   </thead>
-  <tbody id="tbody-estaciones"></tbody>
-</table><br><br>
+  <tbody id="tbodyestaciones">
+    <tr>
+
+    </tr>
+  </tbody>
+</table></div><br><br>
 
 
   
   </div>
-  </center>
+
     <div class="container p-4">
 
   <!-- modal ciclo de riego inicio -->
@@ -147,10 +165,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body form">
           <!-- form ciclo riego inicio -->
-     <form class="form">
+     
       <div class="form-inner">
+        <form id="miForm-ciclo">
 
         <div class="input-wrapper">
           <label for="#estacion">Fecha de revisión:</label>
@@ -159,7 +178,7 @@
               <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
               <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
             </svg></span>
-            <input type="date" name="date" id="txtfechaciclo" rows="3" placeholder="" required autocomplete="off">
+            <input type="datetime-local" name="date" id="txtfechaciclo" rows="3" placeholder="" required autocomplete="off">
           </div>
         </div>
 
@@ -215,7 +234,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-123" viewBox="0 0 16 16">
               <path d="M2.873 11.297V4.142H1.699L0 5.379v1.137l1.64-1.18h.06v5.961h1.174Zm3.213-5.09v-.063c0-.618.44-1.169 1.196-1.169.676 0 1.174.44 1.174 1.106 0 .624-.42 1.101-.807 1.526L4.99 10.553v.744h4.78v-.99H6.643v-.069L8.41 8.252c.65-.724 1.237-1.332 1.237-2.27C9.646 4.849 8.723 4 7.308 4c-1.573 0-2.36 1.064-2.36 2.15v.057h1.138Zm6.559 1.883h.786c.823 0 1.374.481 1.379 1.179.01.707-.55 1.216-1.421 1.21-.77-.005-1.326-.419-1.379-.953h-1.095c.042 1.053.938 1.918 2.464 1.918 1.478 0 2.642-.839 2.62-2.144-.02-1.143-.922-1.651-1.551-1.714v-.063c.535-.09 1.347-.66 1.326-1.678-.026-1.053-.933-1.855-2.359-1.845-1.5.005-2.317.88-2.348 1.898h1.116c.032-.498.498-.944 1.206-.944.703 0 1.206.435 1.206 1.07.005.64-.504 1.106-1.2 1.106h-.75v.96Z"/>
             </svg></span>
-            <input type="number" name="tiempo-ciclos" id="txttiempociclo_ciclo" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="tiempo-ciclos" id="txttiempociclo_ciclo" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -236,7 +255,7 @@
               <path d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
               <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
             </svg></span>
-            <select id="txtstatusciclo_producto" name="aplicacion" required>
+            <select id="txtstatusciclo_producto" step=".01" name="aplicacion" required>
               <option value="">Selecione</option>
               <option value="si">Si</option>
               <option value="no">No</option>
@@ -250,7 +269,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-123" viewBox="0 0 16 16">
               <path d="M2.873 11.297V4.142H1.699L0 5.379v1.137l1.64-1.18h.06v5.961h1.174Zm3.213-5.09v-.063c0-.618.44-1.169 1.196-1.169.676 0 1.174.44 1.174 1.106 0 .624-.42 1.101-.807 1.526L4.99 10.553v.744h4.78v-.99H6.643v-.069L8.41 8.252c.65-.724 1.237-1.332 1.237-2.27C9.646 4.849 8.723 4 7.308 4c-1.573 0-2.36 1.064-2.36 2.15v.057h1.138Zm6.559 1.883h.786c.823 0 1.374.481 1.379 1.179.01.707-.55 1.216-1.421 1.21-.77-.005-1.326-.419-1.379-.953h-1.095c.042 1.053.938 1.918 2.464 1.918 1.478 0 2.642-.839 2.62-2.144-.02-1.143-.922-1.651-1.551-1.714v-.063c.535-.09 1.347-.66 1.326-1.678-.026-1.053-.933-1.855-2.359-1.845-1.5.005-2.317.88-2.348 1.898h1.116c.032-.498.498-.944 1.206-.944.703 0 1.206.435 1.206 1.07.005.64-.504 1.106-1.2 1.106h-.75v.96Z"/>
             </svg></span>
-            <input type="number" name="presion-riego" id="txtpresionciclo_riego_valvula" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="presion-riego" id="txtpresionciclo_riego_valvula" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -260,7 +279,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="presion-riego-cintilla/manguera" id="txtpresionciclo_riego_cintilla_manguera" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="presion-riego-cintilla/manguera" id="txtpresionciclo_riego_cintilla_manguera" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -270,7 +289,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ph-gotero" id="txtphciclo_gotero" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="ph-gotero" id="txtphciclo_gotero" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -280,7 +299,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ce-gotero" id="txtceciclo_gotero" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="ce-gotero" id="txtceciclo_gotero" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -291,7 +310,7 @@
               <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
               <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
             </svg></span>
-            <input type="number" name="mililitros-captacion" id="txtmililitrosciclo_captacion" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="mililitros-captacion" id="txtmililitrosciclo_captacion" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -301,7 +320,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ph-dren" id="txtphciclo_dren" rows="3" placeholder="" min="0"required autocomplete="off">
+            <input type="number" step=".01" name="ph-dren" id="txtphciclo_dren" rows="3" placeholder="" min="0"required autocomplete="off">
           </div>
         </div>
 
@@ -311,7 +330,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ce-dren" id="txtceciclo_dren" rows="3" placeholder="" min="0"required autocomplete="off">
+            <input type="number" step=".01" name="ce-dren" id="txtceciclo_dren" rows="3" placeholder="" min="0"required autocomplete="off">
           </div>
         </div>
 
@@ -322,7 +341,7 @@
               <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
               <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
             </svg></span>
-            <input type="number" name="mililitros-dren" id="txtmililitrosciclo_dren" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="mililitros-dren" id="txtmililitrosciclo_dren" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -333,7 +352,7 @@
               <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
               <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
             </svg></span>
-            <input type="number" name="%-humedad" id="txtporcentajeciclo_humedad" rows="3" placeholder="" min="0" autocomplete="off">
+            <input type="number" step=".01" name="%-humedad" id="txtporcentajeciclo_humedad" rows="3" placeholder="" min="0" autocomplete="off">
           </div>
         </div>
 
@@ -343,34 +362,30 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
               <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
             </svg></span>
-            <input type="number" name="evotransportacion" id="txtevapotranspiracionciclo" rows="3" placeholder="" min="0" autocomplete="off">
+            <input type="number" step=".01" name="evotransportacion" id="txtevapotranspiracionciclo" rows="3" placeholder="" min="0" autocomplete="off">
           </div>
         </div>
 
         <div class="input-wrapper">
           <label for="comentario">Comentarios generales:</label>
-          <div class="input-group"><span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text" viewBox="0 0 16 16">
-              <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-              <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-            </svg></span>
+          <div class="input-group">
             
           </div>
          
         </div> <textarea id="txtcomentariociclo" name="descripcion"  required></textarea>
 
-        <div class="btn-group">
-          <button class="btn btn-success" id="saveciclo">Enviar</button>
-        
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-  
-            
-          </div>
-        </div>
+      </form>
       </div>
-    </form>
-   
+    
+    <div class="btn-group">
+      <button class="btn btn-success" id="saveciclo">Enviar</button>
+    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+        
+      </div>
+    </div>
       <!-- form ciclo fin -->
         </div>
        
@@ -395,11 +410,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body form">
           <!-- form suelo inicio -->
-     <form class="form">
+   
       <div class="form-inner">
-
+        <form id="miForm-suelo">
 
         <div class="input-wrapper">
           <label for="#estacion">Fecha:</label>
@@ -408,7 +423,7 @@
               <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
               <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
             </svg></span>
-            <input type="date" name="datetime-local" id="txtfecha" rows="3" placeholder="" required autocomplete="off">
+            <input type="datetime-local" name="datetime" id="txtfecha" rows="3" placeholder="" required autocomplete="off">
           </div>
         </div>
 
@@ -485,7 +500,7 @@
               <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
               <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
             </svg></span>
-            <input type="number" name="humedad" id="txthumedad" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="humedad" id="txthumedad" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -496,7 +511,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-123" viewBox="0 0 16 16">
               <path d="M2.873 11.297V4.142H1.699L0 5.379v1.137l1.64-1.18h.06v5.961h1.174Zm3.213-5.09v-.063c0-.618.44-1.169 1.196-1.169.676 0 1.174.44 1.174 1.106 0 .624-.42 1.101-.807 1.526L4.99 10.553v.744h4.78v-.99H6.643v-.069L8.41 8.252c.65-.724 1.237-1.332 1.237-2.27C9.646 4.849 8.723 4 7.308 4c-1.573 0-2.36 1.064-2.36 2.15v.057h1.138Zm6.559 1.883h.786c.823 0 1.374.481 1.379 1.179.01.707-.55 1.216-1.421 1.21-.77-.005-1.326-.419-1.379-.953h-1.095c.042 1.053.938 1.918 2.464 1.918 1.478 0 2.642-.839 2.62-2.144-.02-1.143-.922-1.651-1.551-1.714v-.063c.535-.09 1.347-.66 1.326-1.678-.026-1.053-.933-1.855-2.359-1.845-1.5.005-2.317.88-2.348 1.898h1.116c.032-.498.498-.944 1.206-.944.703 0 1.206.435 1.206 1.07.005.64-.504 1.106-1.2 1.106h-.75v.96Z"/>
             </svg></span>
-            <input type="number" name="presion_valvula" id="txtpresion_riego_valvula" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="presion_valvula" id="txtpresion_riego_valvula" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -506,7 +521,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-123" viewBox="0 0 16 16">
               <path d="M2.873 11.297V4.142H1.699L0 5.379v1.137l1.64-1.18h.06v5.961h1.174Zm3.213-5.09v-.063c0-.618.44-1.169 1.196-1.169.676 0 1.174.44 1.174 1.106 0 .624-.42 1.101-.807 1.526L4.99 10.553v.744h4.78v-.99H6.643v-.069L8.41 8.252c.65-.724 1.237-1.332 1.237-2.27C9.646 4.849 8.723 4 7.308 4c-1.573 0-2.36 1.064-2.36 2.15v.057h1.138Zm6.559 1.883h.786c.823 0 1.374.481 1.379 1.179.01.707-.55 1.216-1.421 1.21-.77-.005-1.326-.419-1.379-.953h-1.095c.042 1.053.938 1.918 2.464 1.918 1.478 0 2.642-.839 2.62-2.144-.02-1.143-.922-1.651-1.551-1.714v-.063c.535-.09 1.347-.66 1.326-1.678-.026-1.053-.933-1.855-2.359-1.845-1.5.005-2.317.88-2.348 1.898h1.116c.032-.498.498-.944 1.206-.944.703 0 1.206.435 1.206 1.07.005.64-.504 1.106-1.2 1.106h-.75v.96Z"/>
             </svg></span>
-            <input type="number" name="presion_intilla/manguera" id="txtpresion_riego_cintilla_manguera" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="presion_intilla/manguera" id="txtpresion_riego_cintilla_manguera" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -516,7 +531,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ph_gotero" id="txthp_gotero" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="ph_gotero" id="txthp_gotero" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -526,7 +541,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ph_bomba" id="txtph_bomba" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="ph_bomba" id="txtph_bomba" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -536,7 +551,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ph_tierra" id="txtph_tierra" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="ph_tierra" id="txtph_tierra" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -546,7 +561,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ce_gotero" id="txtce_gotero" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="ce_gotero" id="txtce_gotero" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -556,7 +571,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ce_bomba" id="txtce_bomba" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="ce_bomba" id="txtce_bomba" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -566,7 +581,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ce_tierra" id="txtce_tierra" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="ce_tierra" id="txtce_tierra" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -576,37 +591,29 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
               <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
             </svg></span>
-            <input type="number" name="evotransportacion" id="txtevapotranspiracion" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="evotransportacion" id="txtevapotranspiracion" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
-        </div>
-
+        </div><br>
+  
         <div class="input-wrapper">
           <label for="comentario">Comentarios generales:</label>
-          <div class="input-group"><span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text" viewBox="0 0 16 16">
-              <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-              <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-            </svg></span>
-            
-          </div>
-         
-        </div> <textarea id="txtcomentario" name="descripcion"  required></textarea>
-
-         
-        
-
-        <div class="btn-group">
+          <textarea id="txtcomentario" name="descripcion"  required></textarea>
           
-                    <div class="modal-footer">
-                      <button class="btn btn-success" id="savesuelo">Enviar</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-            
-                      
-                    </div>
+          
+        </div> 
+        </div>
+      </form>
+      <div class="btn-group">
+          
+        <div class="modal-footer">
+          <button class="btn btn-success" id="savesuelo">Enviar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+          
         </div>
       </div>
-    </form>
-    
+   
+     
       <!-- form suelo fin -->
         </div>
       </div>
@@ -635,11 +642,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body form">
           <!-- form estacion inicio -->
-     <form class="form"  autocomplete="off">
+     
       <div class="form-inner">
-
+        <form id="miForm-estacion">
         <div class="input-wrapper">
           <label for="#estacion">Fecha de revisión:</label>
           <div class="input-group"><span class="icon">
@@ -647,7 +654,7 @@
               <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
               <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
             </svg></span>
-            <input type="date" name="date" id="txtfechaestacion" rows="3" placeholder="" required autocomplete="off">
+            <input type="datetime-local" name="date" id="txtfechaestacion" rows="3" placeholder="" required autocomplete="off">
           </div>
         </div>
 
@@ -704,7 +711,7 @@
               <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
               <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
             </svg></span>
-            <input type="number" name="mililitro-captacion" id="txtmililitroscicloestacion_captacion" rows="3" placeholder="" min="0"required autocomplete="off">
+            <input type="number" step=".01" name="mililitro-captacion" id="txtmililitroscicloestacion_captacion" rows="3" placeholder="" min="0"required autocomplete="off">
           </div>
         </div>
 
@@ -714,7 +721,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ph-entrada" id="txtphestacion_entrada" rows="3" placeholder="" min="0"required autocomplete="off">
+            <input type="number" step=".01" name="ph-entrada" id="txtphestacion_entrada" rows="3" placeholder="" min="0"required autocomplete="off">
           </div>
         </div>
 
@@ -724,7 +731,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ec-entrada" id="txtceestacion_entrada" rows="3" placeholder="" min="0"required autocomplete="off">
+            <input type="number" step=".01" name="ec-entrada" id="txtceestacion_entrada" rows="3" placeholder="" min="0"required autocomplete="off">
           </div>
         </div>
 
@@ -735,7 +742,7 @@
               <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
               <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
             </svg></span>
-            <input type="number" name="mililitro-dren" id="" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="mililitro-dren" id="" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -745,7 +752,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ph-dren" id="txtphestacion_dren" rows="3" placeholder="" min="0"  required autocomplete="off">
+            <input type="number" step=".01" name="ph-dren" id="txtphestacion_dren" rows="3" placeholder="" min="0"  required autocomplete="off">
           </div>
         </div>
 
@@ -755,7 +762,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eyedropper" viewBox="0 0 16 16">
               <path d="M13.354.646a1.207 1.207 0 0 0-1.708 0L8.5 3.793l-.646-.647a.5.5 0 1 0-.708.708L8.293 5l-7.147 7.146A.5.5 0 0 0 1 12.5v1.793l-.854.853a.5.5 0 1 0 .708.707L1.707 15H3.5a.5.5 0 0 0 .354-.146L11 7.707l1.146 1.147a.5.5 0 0 0 .708-.708l-.647-.646 3.147-3.146a1.207 1.207 0 0 0 0-1.708l-2-2zM2 12.707l7-7L10.293 7l-7 7H2v-1.293z"/>
             </svg></span>
-            <input type="number" name="ce-dren" id="txtceestacion_dren" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="number" step=".01" name="ce-dren" id="txtceestacion_dren" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
@@ -767,38 +774,34 @@
               <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
               <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
             </svg></span>
-            <input type="text" name="ce-dren" id="txtvariedadestacion" rows="3" placeholder="" min="0" required autocomplete="off">
+            <input type="text" step=".01" name="ce-dren" id="txtvariedadestacion" rows="3" placeholder="" min="0" required autocomplete="off">
           </div>
         </div>
 
         <div class="input-wrapper">
           <label for="comentario">Comentarios generales:</label>
-          <div class="input-group"><span class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text" viewBox="0 0 16 16">
-              <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-              <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-            </svg></span>
+          <div class="input-group">
             
           </div>
-         
-        </div> <textarea name="descripcion" id="txtcomentarioestacion" required></textarea>        
+          <textarea name="descripcion" id="txtcomentarioestacion" required></textarea>  
+        </div>       
 
         
          
         
 
-        <div class="btn-group">
-          <button class="btn btn-success" id="saveestacion">Enviar</button>
-        
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-            
-                      
-                    </div>
-        </div>
+      </form>
       </div>
-    </form>
    
+    <div class="btn-group">
+      <button class="btn btn-success" id="saveestacion">Enviar</button>
+    
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        
+                  
+                </div>
+    </div>
       <!-- form estacion fin -->
         </div>
       </div>
@@ -817,7 +820,9 @@
     <!-- Optional JavaScript; choose one of the two! -->
     
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -827,6 +832,7 @@
     <script src="js/suelos.js"></script>
     <script src="js/ciclos.js"></script>
     <script src="js/estaciones.js"></script>
+    <script src="js/app.js"></script>
     <footer>
       <p>Developed by Departamente de TI de las oficinas centrales Grupo Agricola el Cerezo Tangancícuaro<br>
       <a href="mailto:dev.ti@gmail.com">dev.ti@gmail.com</a></p>

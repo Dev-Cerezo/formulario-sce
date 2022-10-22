@@ -88,17 +88,6 @@ option {
   box-sizing: border-box;
 }
 
-body {
-  display: grid;
-  place-items: center;
-  margin: 0;
-  height: 100vh;
-  padding: var(--space-m);
-  font-size: var(--font-size);
-  font-family: var(--font-family);
-  line-height: 1.2;
-  background-color: var(--color-tertiary);
-}
 
 a {
   color: var(--color-primary);
@@ -124,7 +113,7 @@ h2 {
   content: "";
   position: absolute;
   pointer-events: none;
-  background-color: #ebebeb;
+  background-color: mediumslateblue;
   width: 25%;
   height: 100%;
   transition: background-color var(--duration) var(--ease), transform var(--duration) var(--ease);
